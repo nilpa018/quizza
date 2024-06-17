@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <h1>Welcome to the Pizza & Quiz App</h1>
+    <h2>Welcome to the Pizza & Quiz App</h2>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <div class="collapse navbar-collapse" id="navbarNav">
