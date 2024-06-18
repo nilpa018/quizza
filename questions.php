@@ -27,6 +27,7 @@ ob_start();
             <th scope="col">Question</th>
             <th scope="col">Options</th>
             <th scope="col">Correct answer</th>
+            <th scope="col" colspan="2">Modifications</th>
         </tr>
     </thead>
     <tbody>
@@ -38,6 +39,17 @@ ob_start();
                 <td><?= $row['question']; ?></td>
                 <td><?= $row['options']; ?></td>
                 <td><?= $row['correctAnswer']; ?></td>
+                <td class='border px-2 py-1'>
+                    <form action='delete_question.php' method='post'>
+                        <input type="hidden" name="delete_Id" value="<?= $row['question_id'] ?>">
+                        <button type="submit"> <i class="fa-solid fa-trash"></i></button>
+                    </form>
+                </td>
+                <td class='border px-2 py-1'>
+                    <form action='form_update_question.php' method='post'>
+                        <input type="hidden" name="update_Id" value="<?= $row['question_id'] ?>">
+                        <button type="submit"><i class="fa-solid fa-pen"></i></button>
+                </td>
             </tr>
         <?php endwhile; ?>
     </tbody>
