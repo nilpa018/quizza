@@ -46,6 +46,6 @@ ob_start();
 
 
 <?php
-$title = "questions";
+$title = "quizzes management";
 $content = ob_get_clean();
 include 'layout.php';
