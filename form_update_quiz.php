@@ -2,15 +2,28 @@
 require_once 'config.php';
 
 $id = $_POST['quizId'];
-$sql= "SELECT title , question
+echo $id;
+$sql= "SELECT quiz.quiz_id,title , questions.question_id, question
 FROM quiz 
 INNER JOIN quiz_questions  AS qq ON qq.quiz_id = quiz.quiz_id
 RIGHT JOIN questions ON questions.question_id = qq.question_id
 WHERE quiz.quiz_id = 2
 ";
+// SELECT quiz.quiz_id,title , question FROM quiz 
+// INNER JOIN quiz_questions AS qq ON qq.quiz_id = quiz.quiz_id 
+// RIGHT JOIN questions 
+// ON questions.question_id = qq.question_id WHERE quiz.quiz_id = 2;
+
 $result = $conn->query($sql);
 $tabResult=$result->fetch_all();
 
+$sql2 = "SELECT questions.question_id, question
+FROM questions
+JOIN quiz_questions AS qq ON qq.question_id = questions.question_id
+WHERE qq.quiz_id != $id;
+";
+$result2 = $conn->query($sql2);
+$questions = $result2->fetch_all();
 ?>
 
 <form class="col-6 m-auto">
@@ -20,15 +33,26 @@ $tabResult=$result->fetch_all();
         <input type="text" class="form-control m-2" id="quizName" aria-describedby="quizNameHelp" value="<?= $tabResult[0][0] ?>">
         <small id="quizNameHelp" class="form-text text-muted">Use a name that describe the content.</small>
     </div>
-        <?php foreach($tabResult as $question ):?>
+
     <label class="m-3">Questions</label>
+    <?php foreach($tabResult as $question ):?>
     <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
+        <input class="form-check-input" type="checkbox" value="<?= $question[2] ?>" id="flexCheckDefault" checked>
         <label class="form-check-label" for="flexCheckDefault">
-           <?= $question[1] ?>
+           <?= $question[3] ?>
         </label>
-        <?php endforeach; ?>
     </div>
+    <?php endforeach; 
+    foreach($questions as $questionfree):
+        ?>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="<?= $questionfree[0] ?>" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+            <?= $questionfree[1] ?>
+            </label>
+        </div>
+    <?php endforeach; ?>
+    
     <button type="submit" class="btn btn-primary m-2">Submit</button>
 </form>
 
