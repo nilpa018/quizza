@@ -3,7 +3,7 @@ require_once 'config.php';
 
 $id = $_POST['quizId'];
 echo $id;
-$sql= "SELECT quiz.quiz_id,title , questions.question_id, question
+$sql= "SELECT title , questions.question_id, question
 FROM quiz 
 INNER JOIN quiz_questions  AS qq ON qq.quiz_id = quiz.quiz_id
 RIGHT JOIN questions ON questions.question_id = qq.question_id
@@ -24,6 +24,7 @@ WHERE qq.quiz_id != $id;
 ";
 $result2 = $conn->query($sql2);
 $questions = $result2->fetch_all();
+ob_start();
 ?>
 
 <form class="col-6 m-auto">
@@ -37,9 +38,9 @@ $questions = $result2->fetch_all();
     <label class="m-3">Questions</label>
     <?php foreach($tabResult as $question ):?>
     <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="<?= $question[2] ?>" id="flexCheckDefault" checked>
+        <input class="form-check-input" type="checkbox" value="<?= $question[1] ?>" id="flexCheckDefault" checked>
         <label class="form-check-label" for="flexCheckDefault">
-           <?= $question[3] ?>
+           <?= $question[2] ?>
         </label>
     </div>
     <?php endforeach; 
