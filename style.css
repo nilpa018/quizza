@@ -9,6 +9,14 @@
     font-weight: bold;
 }
 
+.add-question {
+    padding: 20px;
+
+    p {
+        display: inline;
+    }
+}
+
 .buttons {
     text-align: center;
 }
