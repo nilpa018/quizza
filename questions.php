@@ -49,6 +49,7 @@ ob_start();
                     <form action='form_update_question.php' method='post'>
                         <input type="hidden" name="update_Id" value="<?= $row['question_id'] ?>">
                         <button type="submit"><i class="fa-solid fa-pen"></i></button>
+                    </form>
                 </td>
             </tr>
         <?php endwhile; ?>
