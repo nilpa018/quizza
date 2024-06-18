@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `questions` (
   `question` varchar(250) NOT NULL,
   `options` varchar(250) NOT NULL,
   `correctAnswer` varchar(150) NOT NULL,
-  `level` int NOT NULL,
+  `level` varchar(50) NOT NULL,
   `category` varchar(100) NOT NULL,
   PRIMARY KEY (`question_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
