@@ -19,7 +19,7 @@ ob_start();
             <th scope="col">ID</th>
             <th scope="col">Title</th>
             <th scope="col">Question</th>  
-            <th scope="col">Modifications</th>  
+            <th scope="col" colspan="2">Modifications</th>  
         </tr>
     </thead>
     <tbody>
