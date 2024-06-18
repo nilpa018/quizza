@@ -9,7 +9,7 @@ $sql = "SELECT question_id, question, options, correctAnswer, level, category
 $result = $conn->query($sql);
 ob_start();
 ?>
-<h1>Questions management</h1>
+<h2>Questions management</h2>
 
 <table class="table">
     <thead>
@@ -20,6 +20,7 @@ ob_start();
             <th scope="col">Question</th>
             <th scope="col">Options</th>
             <th scope="col">Correct answer</th>    
+            <th scope="col">Modifications</th> 
         </tr>
     </thead>
     <tbody>
