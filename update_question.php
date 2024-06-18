@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($stmt) {
         $stmt->bind_param('sssss', $question, $options, $correctAnswer, $level, $category);
         if ($stmt->execute()) {
-            header('location: ./index.php');
+            header('location: ./questions.php');
         } else {
             echo "Erreur : " . $sql . "<br>" . $stmt->error;
         };
