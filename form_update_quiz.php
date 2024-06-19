@@ -9,10 +9,6 @@ INNER JOIN quiz_questions  AS qq ON qq.quiz_id = quiz.quiz_id
 RIGHT JOIN questions ON questions.question_id = qq.question_id
 WHERE quiz.quiz_id = 2
 ";
-// SELECT quiz.quiz_id,title , question FROM quiz 
-// INNER JOIN quiz_questions AS qq ON qq.quiz_id = quiz.quiz_id 
-// RIGHT JOIN questions 
-// ON questions.question_id = qq.question_id WHERE quiz.quiz_id = 2;
 
 $result = $conn->query($sql);
 $tabResult=$result->fetch_all();
@@ -30,6 +26,7 @@ ob_start();
 <form action="update_quiz.php" method="POST" class="col-6 m-auto">
     <p class="content-title">Quiz update</p>
 
+    <!-- input pour changer nom du quiz -->
     <input type="hidden" name="quizId" value="<?=$id?>">
     <div class="form-group mb-2">
         <label for="quizName">Quiz name</label>
@@ -38,6 +35,11 @@ ob_start();
     </div>
 
     <label class="m-3">Questions</label>
+    <div class="add-question mb-3">
+        <a href="form_add_question.php"><i class="fa-solid fa-plus"></i>
+            <p>Ajouter une question</p>
+        </a>
+    </div>
     <?php foreach($tabResult as $question ):?>
     <div class="form-check">
         <input class="form-check-input" type="checkbox" value="<?= $question[1]  ?>" name="questions[]" id="flexCheckDefault" checked>
