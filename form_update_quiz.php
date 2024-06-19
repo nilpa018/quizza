@@ -27,18 +27,20 @@ $questions = $result2->fetch_all();
 ob_start();
 ?>
 
-<form class="col-6 m-auto">
+<form action="update_quiz.php" method="POST" class="col-6 m-auto">
     <p class="content-title">Quiz update</p>
+
+    <input type="hidden" name="quizId" value="<?=$id?>">
     <div class="form-group mb-2">
         <label for="quizName">Quiz name</label>
-        <input type="text" class="form-control m-2" id="quizName" aria-describedby="quizNameHelp" value="<?= $tabResult[0][0] ?>">
+        <input type="text" class="form-control m-2" name="quizName" id="quizName" aria-describedby="quizNameHelp" value="<?= $tabResult[0][0] ?>">
         <small id="quizNameHelp" class="form-text text-muted">Use a name that describe the content.</small>
     </div>
 
     <label class="m-3">Questions</label>
     <?php foreach($tabResult as $question ):?>
     <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="<?= $question[1] ?>" id="flexCheckDefault" checked>
+        <input class="form-check-input" type="checkbox" value="<?= $question[1]  ?>" name="questions[]" id="flexCheckDefault" checked>
         <label class="form-check-label" for="flexCheckDefault">
            <?= $question[2] ?>
         </label>
