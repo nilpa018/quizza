@@ -1,12 +1,13 @@
 <?php
 require_once 'config.php';
-// 
+
+$id = $_GET['quizId'];
 
 $sql = "SELECT title , questions.question_id, question, options, correctAnswer
 FROM quiz 
 INNER JOIN quiz_questions  AS qq ON qq.quiz_id = quiz.quiz_id
 RIGHT JOIN questions ON questions.question_id = qq.question_id
-WHERE quiz.quiz_id = 2
+WHERE quiz.quiz_id = $id
 ";
 $result = $conn->query($sql);
 

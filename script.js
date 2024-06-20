@@ -1,10 +1,11 @@
 let currentQuestionIndex = 0;
 let score = 0;
 let questions = [];
+const quizId = document.location.search.split("=")[1];
 
 $(document).ready(function () {
     $.ajax({
-        url: 'get_questions.php',
+        url: `get_questions.php?quizId=${quizId}`,
         method: 'GET',
         success: function (data) {
             questions = data;
