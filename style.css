@@ -9,6 +9,12 @@
     font-weight: bold;
 }
 
+#question-container {
+    li {
+        margin-bottom: 1rem;
+    }
+}
+
 .add-question {
     padding: 20px;
 
