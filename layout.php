@@ -32,7 +32,7 @@
                                 Manage
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="quiz.php">Quiz</a></li>
+                                <li><a class="dropdown-item" href="quizzes.php">Quiz</a></li>
                                 <li><a class="dropdown-item" href="questions.php">Questions</a></li>
                             </ul>
                         </li>
@@ -41,7 +41,7 @@
             </div>
         </nav>
         <h1>Welcome to Quizza</h1>
-        <div class="container-fluid content-quiz">
+        <div class="container-fluid content-quiz p-4">
             <?= $content ?>
         </div>
 
