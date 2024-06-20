@@ -6,9 +6,7 @@ From quiz
 INNER JOIN quiz_questions AS qq ON qq.quiz_id = quiz.quiz_id
 LEFT JOIN questions ON questions.question_id = qq.question_id
 order by quiz_id DESC
-;
-";
-$id=1;
+;";
 $result = $conn->query($sql);
 ob_start();
 ?>
@@ -32,22 +30,23 @@ ob_start();
         <tr>
             <th scope="row"><?= $row['quiz_id'];?></th>
             <td><?= $row['title'];?></td>
-            <td><?php
-            if ($row['quiz_id'] = $id ){
-             echo $row['question'];}  
-            else{
-                $id= $row['quiz_id'];
-            }
+            <td><?= $row['question'];
+            // if ($row['quiz_id'] = $id ){
+            //  echo $row['question'];}  
+            // else{
+            //     $id= $row['quiz_id'];
+            // }
             ?></td>
    
             <td class='border px-2 py-1'>
                 <form action='delete_quiz.php' method='post' >
-                    <input type="hidden" name="quizId" value="<?=$row["quiz_id"]?>">
+                    <input type="hidden" name="deleteQuizId" value="<?=$row["quiz_id"]?>">
+
                     <button type="submit"> <i class="fa-solid fa-trash"></i></button>
                 </form>
             </td>
             <td class='border px-2 py-1'><form action='form_update_quiz.php' method='post' >
-                <input type="hidden" name="quizId" value="<?=$row["quiz_id"]?>">
+                <input type="hidden" name="updateQuizId" value="<?=$row["quiz_id"]?>">
                 <button type="submit"><i class="fa-solid fa-pen"></i></button>            
             </td>
         </tr>

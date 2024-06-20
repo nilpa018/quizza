@@ -35,6 +35,7 @@ ob_start();
     </div>
     <?php endforeach; 
     ?>
+    <a href="<?= $_SERVER['HTTP_REFERER'] ?>" class="btn btn-secondary mx-4">CANCEL</a>
     <button type="submit" class="btn btn-primary m-2">Submit</button>
 </form>
 

@@ -1,21 +1,23 @@
 <?php
 require_once 'config.php';
 
-$id = $_POST['quizId'];
+$id = $_POST['updateQuizId'];
 $sql= "SELECT title , questions.question_id, question
 FROM quiz 
 INNER JOIN quiz_questions  AS qq ON qq.quiz_id = quiz.quiz_id
 RIGHT JOIN questions ON questions.question_id = qq.question_id
-WHERE quiz.quiz_id = 2
+WHERE quiz.quiz_id = $id
 ";
-
 $result = $conn->query($sql);
 $tabResult=$result->fetch_all();
-
-$sql2 = "SELECT questions.question_id, question
+$questionsQuizz = array();
+foreach($tabResult as $element){
+    array_push($questionsQuizz,$element[1]);
+}
+$strQuestionsQuizz = implode(", ", $questionsQuizz);
+$sql2 = "SELECT question_id, question
 FROM questions
-JOIN quiz_questions AS qq ON qq.question_id = questions.question_id
-WHERE qq.quiz_id != $id;
+WHERE question_id NOT IN ($strQuestionsQuizz);
 ";
 $result2 = $conn->query($sql2);
 $questions = $result2->fetch_all();
@@ -55,8 +57,8 @@ ob_start();
             <?= $questionfree[1] ?>
             </label>
         </div>
-    <?php endforeach; ?>
-    
+    <?php endforeach; ?> 
+    <a href="<?= $_SERVER['HTTP_REFERER'] ?>" class="btn btn-secondary mx-4">CANCEL</a>
     <button type="submit" class="btn btn-primary m-2">Submit</button>
 </form>
 
