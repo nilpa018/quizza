@@ -9,6 +9,16 @@
     font-weight: bold;
 }
 
+#question-container {
+    li {
+        margin-bottom: 1rem;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
 .add-question {
     padding: 20px;
 
@@ -19,6 +29,10 @@
 
 .buttons {
     text-align: center;
+}
+
+.feedback-msg {
+    font-weight: bold;
 }
 
 footer {
