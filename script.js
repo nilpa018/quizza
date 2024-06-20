@@ -39,10 +39,9 @@ function checkAnswer(questionId, userAnswer) {
         success: function (response) {
             if (response.correct) {
                 score++;
-                loadNextQuestion()
                 $('#score').text(score);
             }
-            loadNextQuestion()
+            loadNextQuestion();
         },
         error: function (error) {
             console.error("Erreur lors de la vérification de la réponse", error);
@@ -60,6 +59,14 @@ function loadNextQuestion() {
 }
 
 function showResults() {
-    $('#question-container').html(`<h2>Quiz terminé !</h2><p>Votre score est de ${score} sur ${questions.length}.</p>`);
+    $('#question-container').html(`<h2>Quiz terminé !</h2><br><p class="feedback-msg">${showFeedBack(score, questions.length)}</p><p>Ton score est de ${score} sur ${questions.length}.</p>`);
     $('#score-container').addClass('hidden');  // Cache le score en fin de quiz
+}
+
+function showFeedBack(score, nbQuestions) {
+    const scorePourcentage = ((100 * score) / nbQuestions).toFixed();
+    if (scorePourcentage < 15) return "Oups";
+    if (scorePourcentage >= 15 && scorePourcentage < 50) return "Tu t'améliores !";
+    if (scorePourcentage >= 50 && scorePourcentage < 100) return "Tu gères vraiment !";
+    if (scorePourcentage == 100) return "Tu es une machine";
 }
