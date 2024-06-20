@@ -6,8 +6,7 @@ $sql = "SELECT question, options, correctAnswer, level, category FROM `questions
 $result = $conn->query($sql);
 $sql2 = "SELECT category FROM `questions` GROUP BY category;";
 $result2 = $conn->query($sql2);
-echo "page précédante:";
-echo $SERVER['HTTP_REFERER'];
+
 ob_start();
 ?>
 
@@ -51,7 +50,6 @@ ob_start();
                 <button type="submit" class="btn btn-primary mx-4">UPDATE</button>
             </div>
             <input type="hidden" name="update_Id" value="<?= $questionId ?>">
-            <input type="hidden" name="location" value="<?= $SERVER['HTTP_REFERER'] ?>">
         </form>
     <?php endwhile; ?>
 </div>

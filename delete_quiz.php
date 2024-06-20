@@ -3,7 +3,7 @@ require_once 'config.php';
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Récupération de l'Id du quizz à supprimer dans input
-    $id = $_POST['quizId'];
+    $id = $_POST['deleteQuizId'];
     $sql = "DELETE FROM quiz
     WHERE quiz_id = $id";
     
