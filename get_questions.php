@@ -1,10 +1,8 @@
 <?php
 require_once 'config.php';
 
-// $id = $_POST['id'];
-$id = 2;
+$id = $_POST['quizId'];
 
-// Récupérez les questions
 $sql = "SELECT title , questions.question_id, question, options, correctAnswer
 FROM quiz 
 INNER JOIN quiz_questions  AS qq ON qq.quiz_id = quiz.quiz_id
@@ -19,14 +17,12 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $questions[] = [
             'title' => $row['title'],
+            'question_id' => $row['question_id'],
             'question' => $row['question'],
-            'options' => $row['options'],
-            'correctAnswer' => $row['correctAnswer']
+            'options' => $row['options']
         ];
     }
 }
 
-
-// Retournez les questions en JSON
 header('Content-Type: application/json');
 echo json_encode($questions);
