@@ -2,19 +2,15 @@
 require_once 'config.php';
 
 
-$result = $conn->query($sql);
-$tabResult=$result->fetch_all();
-
 $sql = "SELECT question_id, question
 FROM questions
 ";
 $result = $conn->query($sql);
-$questions = $result2->fetch_all();
-var_dump($questions);
+$questions = $result->fetch_all();
 ob_start();
 ?>
 
-<form action="update_quiz.php" method="POST" class="col-6 m-auto">
+<form action="create_quiz.php" method="POST" class="col-6 m-auto">
     <p class="content-title">Create quiz</p>
 
     <!-- input pour créernom du quiz -->
@@ -30,28 +26,19 @@ ob_start();
             <p>Ajouter une question</p>
         </a>
     </div>
-    <?php foreach($result as $question ):?>
+    <?php foreach($questions as $question ):?>
     <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="<?= $question[1]  ?>" name="questions[]" id="flexCheckDefault" checked>
+        <input class="form-check-input" type="checkbox" value="<?= $question[0]  ?>" name="questions[]" id="flexCheckDefault" >
         <label class="form-check-label" for="flexCheckDefault">
-       
+        <?= $question[1]  ?>
         </label>
     </div>
     <?php endforeach; 
-    foreach($questions as $questionfree):
-        ?>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="<?= $questionfree[0] ?>" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-            <?= $questionfree[1] ?>
-            </label>
-        </div>
-    <?php endforeach; ?>
-    
+    ?>
     <button type="submit" class="btn btn-primary m-2">Submit</button>
 </form>
 
 <?php
-$title = "quiz update";
+$title = "quiz creation";
 $content = ob_get_clean();
 include 'layout.php';
