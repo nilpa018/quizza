@@ -1,12 +1,24 @@
 .content-quiz {
-    text-align: center;
     width: 100%;
     background-color: rgb(243, 243, 243);
+}
+
+.content-title {
+    text-align: left;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.add-question {
+    padding: 20px;
 
     p {
-        position: relative;
-        top: 50%;
+        display: inline;
     }
+}
+
+.buttons {
+    text-align: center;
 }
 
 footer {
