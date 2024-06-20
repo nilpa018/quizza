@@ -13,7 +13,11 @@ $result = $conn->query($sql);
 ob_start();
 ?>
 <h2>Quizzes management</h2>
-
+<div class="add-question mb-3">
+    <a href="form_create_quiz.php"><i class="fa-solid fa-plus"></i>
+        <p>Créer un nouveau quiz</p>
+    </a>
+</div>
 <table class="table">
     <thead>
         <tr>

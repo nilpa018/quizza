@@ -1,35 +1,26 @@
 <?php
 require_once 'config.php';
 
-$id = $_POST['quizId'];
-$sql= "SELECT title , questions.question_id, question
-FROM quiz 
-INNER JOIN quiz_questions  AS qq ON qq.quiz_id = quiz.quiz_id
-RIGHT JOIN questions ON questions.question_id = qq.question_id
-WHERE quiz.quiz_id = 2
-";
 
 $result = $conn->query($sql);
 $tabResult=$result->fetch_all();
 
-$sql2 = "SELECT questions.question_id, question
+$sql = "SELECT question_id, question
 FROM questions
-JOIN quiz_questions AS qq ON qq.question_id = questions.question_id
-WHERE qq.quiz_id != $id;
 ";
-$result2 = $conn->query($sql2);
+$result = $conn->query($sql);
 $questions = $result2->fetch_all();
+var_dump($questions);
 ob_start();
 ?>
 
 <form action="update_quiz.php" method="POST" class="col-6 m-auto">
-    <p class="content-title">Quiz update</p>
+    <p class="content-title">Create quiz</p>
 
-    <!-- input pour changer nom du quiz -->
-    <input type="hidden" name="quizId" value="<?=$id?>">
+    <!-- input pour créernom du quiz -->
     <div class="form-group mb-2">
         <label for="quizName">Quiz name</label>
-        <input type="text" class="form-control m-2" name="quizName" id="quizName" aria-describedby="quizNameHelp" value="<?= $tabResult[0][0] ?>">
+        <input type="text" class="form-control m-2" name="quizName" id="quizName" aria-describedby="quizNameHelp" value="" placeholder="entrez un nom">
         <small id="quizNameHelp" class="form-text text-muted">Use a name that describe the content.</small>
     </div>
 
@@ -39,11 +30,11 @@ ob_start();
             <p>Ajouter une question</p>
         </a>
     </div>
-    <?php foreach($tabResult as $question ):?>
+    <?php foreach($result as $question ):?>
     <div class="form-check">
         <input class="form-check-input" type="checkbox" value="<?= $question[1]  ?>" name="questions[]" id="flexCheckDefault" checked>
         <label class="form-check-label" for="flexCheckDefault">
-           <?= $question[2] ?>
+       
         </label>
     </div>
     <?php endforeach; 
