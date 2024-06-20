@@ -4,7 +4,6 @@ require_once 'config.php';
 $sql = "SELECT quiz_id, title
 From quiz
 order by quiz_id DESC
-
 ";
 
 $result = $conn->query($sql);
@@ -26,10 +25,7 @@ ob_start();
                 <th scope="row"><?= $row['quiz_id']; ?></th>
                 <td><?= $row['title']; ?></td>
                 <td>
-                    <form action='play.php' method='post'>
-                        <input type="hidden" name="quizId" value="<?= $row["quiz_id"] ?>">
-                        <button type="submit"><i class="fa-solid fa-play"></i></button>
-                    </form>
+                    <button><a href="play.php?quizId=<?= $row["quiz_id"] ?>"><i class="fa-solid fa-play"></i></a></button>
                 </td>
             </tr>
         <?php endwhile; ?>

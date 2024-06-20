@@ -1,8 +1,5 @@
 <?php
 ob_start();
-
-// $id = $_POST['quizId'];
-// echo $id;
 ?>
 <div id="quiz-container">
     <div id="question-container"></div>
