@@ -2,7 +2,6 @@
 require_once 'config.php';
 
 $id = $_POST['quizId'];
-echo $id;
 $sql= "SELECT title , questions.question_id, question
 FROM quiz 
 INNER JOIN quiz_questions  AS qq ON qq.quiz_id = quiz.quiz_id

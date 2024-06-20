@@ -25,7 +25,10 @@ ob_start();
         <tr>
             <th scope="row"><?= $row['quiz_id'];?></th>
             <td><?= $row['title'];?></td>
-            <td><a href="play.php"><i class="fa-solid fa-play"></a></i></td>
+            <td><form action='play.php' method='post' >
+                <input type="hidden" name="quizId" value="<?=$row["quiz_id"]?>">
+                <button type="submit"><i class="fa-solid fa-play"></i></button>  
+            </td>
         </tr>
         <?php endwhile; ?>
     </tbody>
