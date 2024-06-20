@@ -31,7 +31,7 @@ function loadQuestion(index) {
 
 function checkAnswer(choice) {
     const correctAnswer = questions[currentQuestionIndex].correctAnswer;
-    if (choice === correctAnswer) {
+    if (choice == correctAnswer) {
         score++;
         $('#score').text(score);
     }
@@ -49,5 +49,6 @@ function loadNextQuestion() {
 
 function showResults() {
     $('#question-container').html(`<h2>Quiz terminé!</h2><p>Votre score est de ${score} sur ${questions.length}.</p>`);
+    $('#score-container').addClass('hidden');
     $('#next-button').hide();
 }
