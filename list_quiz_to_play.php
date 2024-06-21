@@ -25,7 +25,7 @@ ob_start();
                 <th scope="row"><?= $row['quiz_id']; ?></th>
                 <td><?= $row['title']; ?></td>
                 <td>
-                    <button><a href="play.php?quizId=<?= $row["quiz_id"] ?>"><i class="fa-solid fa-play"></i></a></button>
+                    <button class="btn btn-info"><a href="play.php?quizId=<?= $row["quiz_id"] ?>"><i class="fa-solid fa-play"></i></a></button>
                 </td>
             </tr>
         <?php endwhile; ?>
