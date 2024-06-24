@@ -30,7 +30,6 @@ ob_start();
         while ($row = $result->fetch_assoc()) :
             if($row['quiz_id'] != $idFiltre):  ?>
             <tr>
-                
                 <th scope="row"><?= $row['quiz_id']; ?></th>
                 <td><?= $row['title']; ?></td>
                 <td><?= $row['question'];
@@ -57,9 +56,13 @@ ob_start();
         <?php 
                 endif;
         endwhile; ?>
+                        <input type="hidden" name="updateQuizId" value="<?= $row["quiz_id"] ?>">
+                        <button class="btn btn-light" type="submit"><i class="fa-solid fa-pen"></i></button>
+                </td>
+            </tr>
+        <?php endwhile; ?>
     </tbody>
 </table>
-
 
 <?php
 $title = "quizzes";

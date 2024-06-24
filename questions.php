@@ -74,13 +74,13 @@ ob_start();
                 <td class='border px-2 py-1'>
                     <form action='delete_question.php' method='post'>
                         <input type="hidden" name="delete_Id" value="<?= $row['question_id'] ?>">
-                        <button type="submit"> <i class="fa-solid fa-trash"></i></button>
+                        <button class="btn btn-light" type="submit"> <i class="fa-solid fa-trash"></i></button>
                     </form>
                 </td>
                 <td class='border px-2 py-1'>
                     <form action='form_update_question.php' method='post'>
                         <input type="hidden" name="update_Id" value="<?= $row['question_id'] ?>">
-                        <button type="submit"><i class="fa-solid fa-pen"></i></button>
+                        <button class="btn btn-light" type="submit"><i class="fa-solid fa-pen"></i></button>
                     </form>
                 </td>
             </tr>
