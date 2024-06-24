@@ -26,7 +26,9 @@ ob_start();
         </tr>
     </thead>
     <tbody>
-        <?php while ($row = $result->fetch_assoc()) :  ?>
+        <?php $idFiltre=0;
+        while ($row = $result->fetch_assoc()) :
+            if($row['quiz_id'] != $idFiltre):  ?>
             <tr>
                 <th scope="row"><?= $row['quiz_id']; ?></th>
                 <td><?= $row['title']; ?></td>
@@ -40,6 +42,20 @@ ob_start();
                 </td>
                 <td class='border px-2 py-1'>
                     <form action='form_update_quiz.php' method='post'>
+                        <input type="hidden" name="updateQuizId" value="<?= $row["quiz_id"]; $idFiltre=$row['quiz_id']; ?>">
+                        <button class="btn btn-light" type="submit"><i class="fa-solid fa-pen"></i></button>
+                </td>
+            </tr>
+                <?php else: ?>
+                    <td></td>
+                    <td></td>
+                    <td><?= $row['question'];?></td>
+                    <td></td>
+                    <td></td>    
+            </tr>
+        <?php 
+                endif;
+        endwhile; ?>
                         <input type="hidden" name="updateQuizId" value="<?= $row["quiz_id"] ?>">
                         <button class="btn btn-light" type="submit"><i class="fa-solid fa-pen"></i></button>
                 </td>
@@ -47,7 +63,6 @@ ob_start();
         <?php endwhile; ?>
     </tbody>
 </table>
-
 
 <?php
 $title = "quizzes";
